@@ -1,0 +1,15 @@
+Run
+- maven clean install
+
+1. Using Command line , start the application using
+- java -jar target/fairbilling-0.0.1-SNAPSHOT.jar  billinglogFile.log
+
+Note : This was tested in Windows.
+
+
+- Test cases are written
+
+
+
+
+
