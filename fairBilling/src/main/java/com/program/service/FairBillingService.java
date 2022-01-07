@@ -132,7 +132,7 @@ public class FairBillingService {
 
         //get all sessions for each user
         Map<String, List<UserSession>> map = processLines(splittedEachRecord);
-        
+
 
         List<UserReport> results = new ArrayList<>();
         findTotalSessionsAndTime(results,map,splittedEachRecord);

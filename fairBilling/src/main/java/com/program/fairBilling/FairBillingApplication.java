@@ -1,20 +1,10 @@
 package com.program.fairBilling;
 
-import com.program.model.EachRecord;
 import com.program.model.UserReport;
-import com.program.model.UserSession;
 import com.program.service.FairBillingService;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Paths;
-import java.time.Duration;
-import java.time.LocalTime;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.List;
 
 @SpringBootApplication
 public class FairBillingApplication {
