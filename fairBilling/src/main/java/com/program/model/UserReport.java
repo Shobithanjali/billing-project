@@ -12,14 +12,6 @@ public class UserReport {
         this.billableTimeInSeconds = billableTimeInSeconds;
     }
 
-    @Override
-    public String toString() {
-        return "UserResult{" +
-                "name='" + name + '\'' +
-                ", numberOfSessions=" + numberOfSessions +
-                ", billableTimeInSeconds=" + billableTimeInSeconds +
-                '}';
-    }
 
     public String getName() {
         return name;

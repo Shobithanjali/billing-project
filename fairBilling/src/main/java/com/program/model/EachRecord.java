@@ -6,6 +6,11 @@ public class EachRecord {
 
 
     private String name;
+    private LocalTime recordTime;
+    private String action;
+    private boolean valid;
+    public EachRecord() {
+    }
 
     public LocalTime getRecordTime() {
         return recordTime;
@@ -15,11 +20,6 @@ public class EachRecord {
         this.recordTime = recordTime;
     }
 
-    private LocalTime recordTime;
-    private String action;
-    private boolean valid;
-
-
     public boolean isValid() {
         return valid;
     }
@@ -27,8 +27,6 @@ public class EachRecord {
     public void setValid(boolean valid) {
         this.valid = valid;
     }
-
-
 
     public String getName() {
         return name;
@@ -42,22 +40,9 @@ public class EachRecord {
         return action;
     }
 
-
-    @Override
-    public String toString() {
-        return "EachRecord{" +
-                ", name='" + name + '\'' +
-                ", recordTime=" + recordTime +
-                ", action='" + action + '\'' +
-                ", valid=" + valid +
-                '}';
-    }
-
     public void setAction(String action) {
         this.action = action;
     }
-
-    public EachRecord() {}
 
 
 }

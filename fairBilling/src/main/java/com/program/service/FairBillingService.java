@@ -73,7 +73,7 @@ public class FairBillingService {
         }
 
         //If START action, add a new session
-        if (START_ACTION.equalsIgnoreCase(line.getAction()) ) {
+        if (START_ACTION.equalsIgnoreCase(line.getAction())) {
             UserSession userSession = new UserSession(line.getName());
             userSession.setStartTime(line.getRecordTime());
             userSessionList.add(userSession);
@@ -81,7 +81,7 @@ public class FairBillingService {
         }
 
         //If END, either update already present first occurring start session's end date or add a new session with current end Time
-        for (UserSession userSession: userSessionList) {
+        for (UserSession userSession : userSessionList) {
 
             if (userSession.getEndTime() == null) {
                 userSession.setEndTime(line.getRecordTime());
@@ -111,13 +111,13 @@ public class FairBillingService {
         Pattern pattern = Pattern.compile(regularExpression);
         Matcher matcher = pattern.matcher(line);
 
-        while(matcher.find()) {
+        while (matcher.find()) {
             //silently ignored if invalid
             splitRecord.setValid(matcher.matches());
 
-            splitRecord.setRecordTime(LocalTime.parse(matcher.group(1) +":" +matcher.group(2) + ":" + matcher.group(3)));
-            splitRecord.setName( matcher.group(4) );
-            splitRecord.setAction( matcher.group(5) );
+            splitRecord.setRecordTime(LocalTime.parse(matcher.group(1) + ":" + matcher.group(2) + ":" + matcher.group(3)));
+            splitRecord.setName(matcher.group(4));
+            splitRecord.setAction(matcher.group(5));
         }
         return splitRecord;
     }
@@ -135,7 +135,7 @@ public class FairBillingService {
 
 
         List<UserReport> results = new ArrayList<>();
-        findTotalSessionsAndTime(results,map,splittedEachRecord);
+        findTotalSessionsAndTime(results, map, splittedEachRecord);
 
 
         return results;
@@ -145,13 +145,13 @@ public class FairBillingService {
         LocalTime firstTime = null;
         LocalTime lastTime = null;
         if (splittedEachRecord.size() > 0) {
-            firstTime =splittedEachRecord.get(0).getRecordTime();
-            lastTime = splittedEachRecord.get(splittedEachRecord.size()-1).getRecordTime();
+            firstTime = splittedEachRecord.get(0).getRecordTime();
+            lastTime = splittedEachRecord.get(splittedEachRecord.size() - 1).getRecordTime();
         }
 
         for (String name : map.keySet()) {
-            int totalTime=0;
-            int totalSessions=0;
+            int totalTime = 0;
+            int totalSessions = 0;
             for (UserSession session : map.get(name)) {
                 totalSessions++;
                 if (session.getStartTime() == null) {
@@ -160,9 +160,9 @@ public class FairBillingService {
                 if (session.getEndTime() == null) {
                     session.setEndTime(lastTime);
                 }
-                totalTime +=  Duration.between(session.getStartTime(),session.getEndTime()).getSeconds();
+                totalTime += Duration.between(session.getStartTime(), session.getEndTime()).getSeconds();
             }
-            results.add( new UserReport(name, totalSessions, totalTime) );
+            results.add(new UserReport(name, totalSessions, totalTime));
         }
 
     }
